@@ -6,9 +6,11 @@
 
     <com.guolifeng.android.viewtest.CircleView
         android:id="@+id/circleView1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:background="#000000"
+        android:layout_margin="20dp"
+        android:padding="20dp"
         />
 
 </LinearLayout>

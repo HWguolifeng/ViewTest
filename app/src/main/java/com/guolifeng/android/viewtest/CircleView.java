@@ -45,10 +45,14 @@ public class CircleView extends View
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
-        int width = getWidth();
-        int height = getHeight();
+        int paddingTop = getPaddingTop();
+        int paddingBottom = getPaddingBottom();
+        int paddingLeft = getPaddingLeft();
+        int paddingRight = getPaddingRight();
+        int width = getWidth() - paddingLeft - paddingRight;
+        int height = getHeight() - paddingBottom - paddingTop;
         int radius = Math.min(width, height) / 2;
-        canvas.drawCircle(width / 2, height / 2, radius, mPaint);
+        canvas.drawCircle(paddingLeft + width / 2, paddingTop + height / 2, radius, mPaint);
 
     }
 }
