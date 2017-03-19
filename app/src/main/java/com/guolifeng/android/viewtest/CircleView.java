@@ -42,6 +42,28 @@ public class CircleView extends View
     }
 
     @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
+    {
+        int mWith = 200;
+        int mHeight = 200;
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int withSpecMode = MeasureSpec.getMode(widthMeasureSpec);
+        int withSpecSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
+        if (withSpecMode == MeasureSpec.AT_MOST && heightSpecMode == MeasureSpec.AT_MOST)
+        {
+            setMeasuredDimension(mWith, mHeight);
+        } else if (withSpecMode == MeasureSpec.AT_MOST)
+        {
+            setMeasuredDimension(mWith, heightSpecSize);
+        } else if (heightSpecMode == MeasureSpec.AT_MOST)
+        {
+            setMeasuredDimension(withSpecSize, mHeight);
+        }
+    }
+
+    @Override
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
