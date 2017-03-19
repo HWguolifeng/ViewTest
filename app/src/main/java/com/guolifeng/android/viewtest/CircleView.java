@@ -1,10 +1,10 @@
 package com.guolifeng.android.viewtest;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -15,7 +15,7 @@ import android.view.View;
 
 public class CircleView extends View
 {
-    private int mColor = Color.RED;
+    private int mColor = Color.BLUE;
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     public CircleView(Context context)
@@ -24,15 +24,21 @@ public class CircleView extends View
         init();
     }
 
-    public CircleView(Context context, @Nullable AttributeSet attrs)
+    public CircleView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleView);
+        mColor = a.getColor(R.styleable.CircleView_circle_color, Color.GRAY);
+        a.recycle();
         init();
     }
 
-    public CircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr)
+    public CircleView(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleView);
+        mColor = a.getColor(R.styleable.CircleView_circle_color, Color.GRAY);
+        a.recycle();
         init();
     }
 
